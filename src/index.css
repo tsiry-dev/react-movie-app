@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+
+li {
+  list-style: none
+}
+
+a {
+  text-decoration: none
+}
+
+.text-gradient {
+  @apply bg-linear-to-r  from-[#0093E9] to-[#6c1288] bg-clip-text text-transparent;
+}
+
+.primary-color {
+  @apply text-[#0093E9];
+}
+
+.secondary-color {
+  @apply text-[#6c1288];
+}
+
+.primary-bg-color {
+  @apply bg-[#0093E9];
+}
+
+.secondary-bg-color {
+  @apply bg-[#6c1288];
+}
+
+.form-input {
+  @apply w-full outline-none border-1 border-gray-300 py-2 text-white px-4 text-2xl font-semibold rounded-3xl
+}

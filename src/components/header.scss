@@ -1,0 +1,80 @@
+.header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  
+  // Animation du background avec gradient animé
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      $primary-color 0%,
+      $secondary-color 25%,
+      $primary-color 50%,
+      $secondary-color 75%,
+      $primary-color 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: 0;
+  }
+  
+  // Animation avec des formes flottantes
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at 30% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
+    animation: float 20s ease-in-out infinite;
+    z-index: 0;
+  }
+  
+  // S'assurer que le contenu est au-dessus
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Animation du gradient
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Animation des formes flottantes
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
