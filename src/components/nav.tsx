@@ -1,8 +1,22 @@
+import { useState, useEffect } from "react";
 import "./nav.scss";
+import { NavLink } from "react-router";
 
 export default function Nav() {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            setIsScrolled(scrollPosition > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <nav className="nav">
+        <nav className={`nav ${isScrolled ? "scrolled" : ""}`}>
             <div className="nav-brand">
                 <svg 
                     className="nav-icon" 
@@ -21,11 +35,11 @@ export default function Nav() {
                 <h1>Movie App</h1>
             </div>
 
-            <div className="flex gap-5">
-                <li><a href="">Link</a></li>
-                <li><a href="">Link</a></li>
-                <li><a href="">Link</a></li>
-            </div>
+            <ul className="flex gap-5">
+                 <li><NavLink to={"/"}>Acceuil</NavLink></li>
+                 <li><NavLink to={"/movies"}>Film</NavLink></li>
+                 <li><NavLink to={"/about"}>A propos</NavLink></li>
+            </ul>
         </nav>
     )
 }
