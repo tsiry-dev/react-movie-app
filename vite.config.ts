@@ -20,5 +20,9 @@ export default defineConfig({
         additionalData: `@import "${path.resolve(__dirname, 'src/_variables.scss').replace(/\\/g, '/')}";`
       }
     }
-  }
+  },
+  server: {
+    host: true,        // 🔥 clé importante
+    port: 5173,
+  },
 })

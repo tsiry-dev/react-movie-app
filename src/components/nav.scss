@@ -266,11 +266,11 @@ $nav-backdrop-blur: blur(10px);
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-20px) translateX(-50%);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateX(-50%);
   }
 }
 
@@ -316,5 +316,57 @@ $nav-backdrop-blur: blur(10px);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+// ===============================
+// RESPONSIVE CLEAN (SANS REFACTOR)
+// ===============================
+
+@media (max-width: 768px) {
+  .nav {
+    top: 0.75rem;
+    left: 50%;
+    width: calc(100% - 2rem);
+    max-width: 100%;
+    height: auto;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+
+    &:hover {
+      transform: translateX(-50%);
+    }
+
+    &.scrolled:hover {
+      transform: translateX(-50%);
+    }
+
+    // Brand toujours visible
+    .nav-brand {
+      justify-content: center;
+    }
+
+    // Liens en colonne (menu mobile)
+    .flex {
+      margin-top: 0.75rem;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      li {
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+          width: 100%;
+          padding: 0.6rem 1rem;
+          border-radius: 1rem;
+        }
+      }
+    }
   }
 }
